@@ -41,10 +41,16 @@ function exibirMenu() {
            
    })
   }
-     
 
-
-
-
-
+function inserirLembrete(){
+    rl.question('Digite o lembrete: ', (lembrete) => {
+        rl.question('Digite o prazo: ', (prazo) => {
+            rl.question('Foi concluido dentro do prazo: ', (concluido) => {
+              lembretes.push({lembrete: lembrete, prazo: parseInt(prazo), concluido: concluido})
+              console.log('Lembrete cadastrado com sucesso!')
+              exibirMenu()
+            })  
+          })
+      })
+   }
 
