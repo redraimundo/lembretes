@@ -64,10 +64,37 @@ function listarLembrete() {
         console.log('Lista de lembretes.')
         lembretes.forEach((lembretes, index) => {
             console.log(`${index + 1}
-            Nome: ${lembretes.nome}
+            Nome: ${lembretes.lembrete}
             Prazo: ${lembretes.prazo}
             Estado: ${lembretes.concluido}`)
         })
     }
     exibirMenu()
+}
+
+function editarLembrete() {
+    if(lembretes == 0) {
+        console.log('Ainda não há lembretes adicionados.')
+    }
+    else{
+        console.log('Lista de lembretes.')
+        lembretes.forEach((lembretes, index) => {
+            console.log(`${index + 1}. ${lembretes.lembrete}`)
+        })
+        rl.question('Digite o número do lembrete que deseja editar: ', (numero) => {
+            numero = parseInt(numero)
+
+            if(numero > 0 && numero <= lembretes.length) {
+                rl.question('Digite o novo nome do lembrete: ', (lembrete) => {
+                    rl.question('Digite o novo prazo do lembrete: ', (prazo) => {
+                        lembretes[numero -1] = {
+                            lembrete, prazo
+                        }
+                        console.log('Lembrete editado com sucesso.')
+                        exibirMenu()
+                    })
+                })
+            }
+        })
+    }
 }
