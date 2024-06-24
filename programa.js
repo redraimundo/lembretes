@@ -6,6 +6,8 @@ const rl = readline.createInterface({
 })    
 let lembretes = []
 
+exibirMenu()
+
 function exibirMenu() {
     console.log(`
     Menu:
@@ -54,3 +56,18 @@ function inserirLembrete(){
       })
    }
 
+function listarLembrete() {
+    if(lembretes == 0) {
+        console.log('Ainda não há lembretes adicionados.')
+    }
+    else{
+        console.log('Lista de lembretes.')
+        lembretes.forEach((lembretes, index) => {
+            console.log(`${index + 1}
+            Nome: ${lembretes.nome}
+            Prazo: ${lembretes.prazo}
+            Estado: ${lembretes.concluido}`)
+        })
+    }
+    exibirMenu()
+}
